@@ -8,6 +8,8 @@ You do not need to have used DirectX. The ideas are the ones a 2001 graphics lab
 
 Work from the project root. `clang++` and `xcrun` must be on `PATH`. Output always lands in `build/` (gitignored).
 
+Build on the Mac that will run it. This needs macOS 14 (Sonoma) or newer. That is an Apple Silicon Mac, and also a late Intel Mac that can still install Sonoma: MacBook Air and MacBook Pro from 2018, Mac mini from 2018, iMac from 2019, iMac Pro from 2017, and Mac Pro from 2019, including the last Intel models (2020 iMac, 2020 13-inch MacBook Pro, 2019 Mac Pro). `make` compiles for the machine it is running on. An `.app` built on an M1 is arm64 and will not launch on Intel.
+
 | What you want | Command | What you get |
 |---------------|---------|--------------|
 | The app | `make` then `make run` | `build/PCFE3DWorld.app`, opened |

@@ -4,6 +4,8 @@ A step-by-step trace of what happens from process start through the first pictur
 
 `make run` opens **PCFE 3D World**. `make test` never reaches this file: it links `world_sim.cpp` and `mesh.cpp` only.
 
+The trace is the same on Apple Silicon and on a late Intel Mac. Sonoma (macOS 14) still runs on MacBook Air and MacBook Pro from 2018, Mac mini from 2018, iMac from 2019, iMac Pro from 2017, and Mac Pro from 2019. Build with `make` on that Mac. The binary records the CPU it was compiled for, so an M1 `.app` will not start on Intel.
+
 One thread does the work after startup:
 
 - **main** — `NSApplication`, the window, `CADisplayLink`, input, and the Metal submit
@@ -35,7 +37,7 @@ app.delegate = delegate;
 
 **4.** `WorldView` installs a `CAMetalLayer` (sRGB, opaque) and constructs `WorldRenderer`.
 
-**5.** The renderer asks for the system Metal device. On this M1 that is the Apple GPU. It then loads `World.metallib` from the bundle's Resources. If that file is missing, `ready` stays false and an alert explains that `make` has to be run. The shader is not compiled at launch; `make` already ran `metal` and `metallib`.
+**5.** The renderer asks for the system Metal device. On an M1 that is the Apple GPU. On a late Intel Mac it is that machine's Intel or AMD GPU, which is enough for this scene. It then loads `World.metallib` from the bundle's Resources. If that file is missing, `ready` stays false and an alert explains that `make` has to be run. The shader is not compiled at launch; `make` already ran `metal` and `metallib`.
 
 **6.** Two pipelines are built from `worldVertex` and `worldFragment`: one opaque, one additive. Both sample at 4× if the device allows it, and both write depth as 32-bit float. Three depth states exist: always (sky), less-and-write (solid bodies), less-and-read (air, ribbons, halo).
 

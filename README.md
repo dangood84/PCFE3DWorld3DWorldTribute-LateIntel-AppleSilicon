@@ -12,9 +12,12 @@ How the pieces fit together (same split as the other tributes): `WORKINGS.md` fo
 
 ## Requirements
 
-- An Apple Silicon Mac (this tree was built on an M1)
-- macOS 14 or newer
+- macOS 14 (Sonoma) or newer
 - Xcode Command Line Tools, so `clang++` and `xcrun metal` are on your `PATH`
+
+This tree was built on an M1 Mac. The same `make` also builds and runs on a late Intel Mac, on the machine itself. Sonoma still supports these Intel models: MacBook Air and MacBook Pro from 2018, Mac mini from 2018, iMac from 2019, iMac Pro from 2017, and Mac Pro from 2019. That includes the last Intel Macs (2020 iMac, 2020 13-inch MacBook Pro, 2019 Mac Pro).
+
+Copy the source folder across and run `make` there. The `.app` produced on an M1 is Apple Silicon only, so it will not launch on an Intel Mac.
 
 ```bash
 xcode-select --install
