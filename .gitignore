@@ -1,0 +1,58 @@
+# PCFE 3D World — Metal / C++ on macOS.
+# Source lives in src/, shaders/, and bundle/. The Makefile writes everything
+# else into build/, including the .app and the compiled shader library.
+
+# App bundle, headless test binary, Metal AIR, and World.metallib.
+build/
+
+# Metal compiler products. shaders/World.metal is the source.
+# `metal` writes a .air file; `metallib` links that into a .metallib.
+# Neither belongs in git. A debug build can also drop .dia next to them.
+*.air
+*.metallib
+*.dia
+
+# Stray compiler output if a file is compiled outside build/.
+*.o
+*.d
+*.dSYM
+*.dSYM/
+
+# A one-off binary in the project root (the real ones live under build/).
+/PCFE3DWorld
+/world_test
+
+# Xcode user state, if this folder is opened as a project.
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Finder and AppleDouble resource forks.
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+
+# Editors.
+.idea/
+*.iml
+.vscode/
+.cursor/
+*.swp
+*.swo
+*~
+*.bak
+*.orig
+
+# Logs and crash leftovers.
+*.log
+core
+core.*
+*.core
